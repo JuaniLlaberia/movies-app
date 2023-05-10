@@ -1,5 +1,5 @@
 .search-page {
-    background-color: rgb(52, 33, 119);
+    background-color: #22253f;
     padding-bottom: 25px;
     margin-top: 7.5vh;
 }
@@ -9,79 +9,136 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: rgba(255, 255, 255, 0.493);
 }
 
 .query {
-    font-weight: 400;
+    font-weight: 500;
+    margin-left: 2.5px;
     color: rgb(255, 255, 255);
 }
 
 .search-page header h6 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 10px;
+    color: rgba(255, 255, 255, 0.467);
 }
 
 .search-page header ul li{
     list-style-type: none;
-    background-color: rgb(247, 241, 241);
-    padding: 5px;
-    border-radius: 8px;
+    background-color: #eeeff4;
+    padding: 7.5px;
     color: rgb(45, 42, 42);
-    transition: all .3s ease;
+    /* transition: all .3s ease; */
 }
 
 .search-page header ul li.active{
     list-style-type: none;
-    background-color: rgb(214, 30, 231);
-    padding: 5px;
-    border-radius: 8px;
+    background-color: #a64cff;
+    padding: 7.5px;
     color: white;
 }
 
 .search-page header ul li:hover{
-    transform: translateY(3%);
+    background-color: #ffffff;
     cursor: pointer;
 }
 
+.search-page header ul li.active:hover{
+    background-color: #ac5bfc;
+}
+
 .search-page header ul {
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+}
+
+.search-page header ul li:nth-child(1) {
+    border-radius: 12px 0 0 12px;
+}
+
+.search-page header ul li:nth-child(3) {
+    border-radius: 0 12px 12px 0;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-bar {
+    margin-top: 25px;
+    display: flex;
+    font-size: 1rem;
+    padding: 10px;
+    overflow-x: scroll;
+    width: 50vw;
+}
+
+.categories-bar li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px 15px;
+    height: 5vh;
+    background-color: #eeeff4;
+}
+
+.categories-bar li:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.categories-bar li.active {
+    color: white;
+    background-color: #a64cff;
+}
+
+.categories-bar li.active:hover {
+    background-color: #ac5bfc;
+}
+
+.categories-bar::-webkit-scrollbar {
+    height: 5px;
+}
+
+.categories-bar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.categories-bar::-webkit-scrollbar-thumb {
+    background: #e3e3e3ab;
+    border-radius: 10px;
 }
 
 .search-page-content {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 90vh;
+    min-height: 100vh;
+    position: relative;
+}
+
+.no-results {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .search-content {
     margin-top: 25px;
     width: 90vw;
-    height: 90vh;
-    background-color: rgb(219, 218, 224);
+    background-color: transparent;
     border-radius: 16px 0 0 16px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    overflow: scroll;
-}
-
-.search-content::-webkit-scrollbar {
-    height: 0px;
-    width: 10px;
-}
-
-.search-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.search-content::-webkit-scrollbar-thumb {
-    background: #aba8a8;
 }
 
 .pagination {
@@ -94,21 +151,21 @@
 
 .pagination h6 {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
     color: white;
 }
 
 .pagination button {
     border: none;
-    background-color: rgb(201, 201, 201);
-    padding: 5px;
+    background-color: #a64cff;
+    color: white;
+    padding: 5px 15px;
     border-radius: 16px;
+    box-shadow: 0 1px 3px black;
     transition: all .3s ease;
 }
 
 .pagination button:hover {
-    color: #3e3d3d;
-    background-color: rgb(205, 198, 198);
-    transform: translateY(3%);
+    transform: translateY(4%);
     cursor: pointer;
 }

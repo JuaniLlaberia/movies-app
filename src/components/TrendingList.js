@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react"
 import apiConfig from "../apiConfig";
 import MovieItem from "./MovieItem";
 import { Link } from "react-router-dom";
+import useFetchData from "../hooks/useFetchData";
+import { ClipLoader } from 'react-spinners';
 
 const TrendingList = ({title, urlSection}) => {
-    const [trending, setTrending] = useState([]);
+    const { data, error, loading} = useFetchData(`${apiConfig.baseUrl}${urlSection}&api_key=${apiConfig.apiKey}`);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`${apiConfig.baseUrl}${urlSection}&api_key=${apiConfig.apiKey}`);
-                const data = await response.json();
-                setTrending(data.results)
-            } catch(err) {
-                console.log(err);
-            }
-        }
-        fetchData();
-    }, [urlSection]);
-
-    const listToRender = trending?.map(item => {
+    const listToRender = data?.results?.map(item => {
         let title = item?.title
         if(title === undefined) title = item?.name
         return <MovieItem key={item?.id} posterImg={item?.poster_path} title={title} score={item?.vote_average} id={item?.id} type={item?.media_type}/>
@@ -29,10 +17,11 @@ const TrendingList = ({title, urlSection}) => {
     <section className='trending-list'>
         <div className='trending-top'>
             <h6 className='trending-title'>{title}</h6>
-            <Link to=''>See more</Link>
+            <Link to='' className='see-more-link'>See more</Link>
         </div>
         <ul className='trending-items-scroll'>
-            {listToRender}
+            {loading ? <ClipLoader color="#D4ADFC" /> : listToRender}
+            {error === null ? null : <div>{error.message}</div>}
         </ul>
     </section>
   )

@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 import Navbar from "./components/Navbar";
 import Results from "./pages/Results";
 import { useState } from "react";
+import Catalog from "./pages/Catalog";
+import ScrollToTopReload from "./components/ScrollToTopReload";
 
 function App() {
   const [globalQuery, setGlobalQuery] = useState(() => {
@@ -16,10 +18,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <ScrollToTopReload/>
       <Routes>
         <Route path='/' element={<Home setQuery={setGlobalQuery}/>}/>
         <Route path='/search' element={<Results query={globalQuery}/>}/>
         <Route path="/:type/:id" element={<Details />}/>
+        <Route path='/catalog/:typeOf' element={<Catalog />}/>
       </Routes>
       <Footer />
     </div>

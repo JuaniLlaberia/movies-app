@@ -21,23 +21,26 @@
     width: 20vw;
     min-width: 300px;
     border-radius: 16px;
+    box-shadow: 0 2px 5px black;
 }
 
 .img-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .left-info {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 20px;
     padding: 25px;
 }
 
 .details-page-title {
-    margin-top: 50px;
+    margin-top: 60px;
     color: white;
     font-size: 2.5rem;
 }
@@ -46,22 +49,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 2vw;
     margin-top: 10px;
 }
 
 .details-page-genres li{
     list-style: none;
-    padding: 5px;
+    padding: 5px 15px;
     border-radius: 24px;
     color: rgb(255, 255, 255);
-    background-color: rgba(49, 48, 48, 0.645);
+    background-color: rgba(128, 128, 128, 0.418);
 }
 
 .details-page-summary {
     color: white;
     font-size: 1rem;
     padding: 10px;
+    text-align: justify;
 }
 
 .details-page-score {
@@ -73,8 +77,8 @@
     background-color: rgba(49, 48, 48, 0.645);
     padding: 10px;
     border-radius: 24px;
-    top: 10%;
-    left: 50%;
+    top: 15%;
+    right: 31%;
     color: white;
 }
 
@@ -88,7 +92,7 @@
     font-size: 1rem;
     font-weight: 400;
     color: white;
-    background-color: rgba(49, 48, 48, 0.645);
+    background-color: rgba(128, 128, 128, 0.418);
     padding: 10px;
     border-radius: 24px;
 }
@@ -117,10 +121,11 @@
 
 .recommendations {
     padding: 15px;
-    background-color: rgb(234, 234, 234);
+    background-color: #22253f;
 }
 .rec-title{
     font-size: 2rem;
     font-weight: 400;
+    color: white;
 }
 
