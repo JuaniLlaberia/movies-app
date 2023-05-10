@@ -1,0 +1,114 @@
+.search-page {
+    background-color: rgb(52, 33, 119);
+    padding-bottom: 25px;
+    margin-top: 7.5vh;
+}
+
+.search-page header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgba(255, 255, 255, 0.493);
+}
+
+.query {
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+
+.search-page header h6 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.search-page header ul li{
+    list-style-type: none;
+    background-color: rgb(247, 241, 241);
+    padding: 5px;
+    border-radius: 8px;
+    color: rgb(45, 42, 42);
+    transition: all .3s ease;
+}
+
+.search-page header ul li.active{
+    list-style-type: none;
+    background-color: rgb(214, 30, 231);
+    padding: 5px;
+    border-radius: 8px;
+    color: white;
+}
+
+.search-page header ul li:hover{
+    transform: translateY(3%);
+    cursor: pointer;
+}
+
+.search-page header ul {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.search-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.search-content {
+    margin-top: 25px;
+    width: 90vw;
+    height: 90vh;
+    background-color: rgb(219, 218, 224);
+    border-radius: 16px 0 0 16px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    overflow: scroll;
+}
+
+.search-content::-webkit-scrollbar {
+    height: 0px;
+    width: 10px;
+}
+
+.search-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.search-content::-webkit-scrollbar-thumb {
+    background: #aba8a8;
+}
+
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.pagination h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+}
+
+.pagination button {
+    border: none;
+    background-color: rgb(201, 201, 201);
+    padding: 5px;
+    border-radius: 16px;
+    transition: all .3s ease;
+}
+
+.pagination button:hover {
+    color: #3e3d3d;
+    background-color: rgb(205, 198, 198);
+    transform: translateY(3%);
+    cursor: pointer;
+}

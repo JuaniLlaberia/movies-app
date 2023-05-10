@@ -1,18 +1,27 @@
-import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Details from "./pages/Details";
+import Footer from './components/Footer'
+import Navbar from "./components/Navbar";
+import Results from "./pages/Results";
+import { useState } from "react";
 
 function App() {
-  useEffect(()=> {
-    const fetchMovies = async () => {
-      const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=ea962e6c660af4bd263293356299c277');
-      const data = await response.json();
-      console.log(data);
-    }
-    fetchMovies();
-  }, []);
-  
+  const [globalQuery, setGlobalQuery] = useState(() => {
+    const storedQuery = JSON.parse(localStorage.getItem('MOVIE_QUERY'));
+    if (storedQuery == null) return '';
+    return storedQuery;
+  });
+
   return (
     <div className="App">
-      Hello world!
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home setQuery={setGlobalQuery}/>}/>
+        <Route path='/search' element={<Results query={globalQuery}/>}/>
+        <Route path="/:type/:id" element={<Details />}/>
+      </Routes>
+      <Footer />
     </div>
   );
 }

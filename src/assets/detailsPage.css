@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+
+.details-page {
+    height: 100vh;
+}
+
+.details-page-info-section{
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.details-page-poster {
+    height: 65vh;
+    width: 20vw;
+    min-width: 300px;
+    border-radius: 16px;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+}
+
+.details-page-title {
+    margin-top: 50px;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.details-page-genres {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.details-page-genres li{
+    list-style: none;
+    padding: 5px;
+    border-radius: 24px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(49, 48, 48, 0.645);
+}
+
+.details-page-summary {
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.details-page-score {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    font-size: 1.5rem;
+    background-color: rgba(49, 48, 48, 0.645);
+    padding: 10px;
+    border-radius: 24px;
+    top: 10%;
+    left: 50%;
+    color: white;
+}
+
+.star-icon {
+    color: rgb(255, 239, 21);
+    stroke: black;
+    stroke-width: 5;
+}
+
+.details-page-date, .details-page-duration {
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+    background-color: rgba(49, 48, 48, 0.645);
+    padding: 10px;
+    border-radius: 24px;
+}
+
+.details-page-bg {
+    height: 100vh;
+    width: 98.9vw;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(4.5px);
+    z-index: -2;
+}
+
+.filter {
+    height: 100vh;
+    width: 98.9vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.recommendations {
+    padding: 15px;
+    background-color: rgb(234, 234, 234);
+}
+.rec-title{
+    font-size: 2rem;
+    font-weight: 400;
+}
+
