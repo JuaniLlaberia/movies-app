@@ -276,7 +276,7 @@ main.light {
 }
 
 footer {
-    height: 50vh;
+    height: 40vh;
     background-color: black;
 }
 
@@ -286,7 +286,7 @@ footer {
     justify-content: center;
     gap: 100px;
     font-size: 1.5rem;
-    height: 20vh;
+    padding-top: 50px;
 }
 
 .footer-top-left, .footer-top-right{
@@ -294,6 +294,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
 }
 
 .footer-top-left a, .footer-top-right a {
@@ -310,7 +311,7 @@ footer {
     display: flex;
     justify-content: space-around;
     gap: 100px;
-    height: 25vh;
+    margin-top: 50px;
 }
 
 .footer-bottom-left, .footer-bottom-right{
@@ -333,4 +334,17 @@ footer {
 .footer-bottom-right ul{
     display: flex;
     gap: 20px;
+}
+
+.footer-bottom-right ul li{
+    list-style: none;
+}
+
+.footer-bottom-right ul li a{
+    color: white;
+    transition: all .3s ease;
+}
+
+.footer-bottom-right ul li a:hover{
+    color: rgb(234, 227, 227);
 }
