@@ -149,6 +149,7 @@ main.light {
 .movie-item {
     width: 11vw;
     height: 35vh;
+    min-width: 200px;
     border-radius: 12px;
     list-style: none;
     margin: 9px;
@@ -162,6 +163,7 @@ main.light {
 }
 
 .movie-item-img {
+    min-width: 200px;
     width: 11vw;
     height: 35vh;
     border-radius: 12px;
@@ -199,12 +201,13 @@ main.light {
     justify-content: center;
     align-items: center;
     background-color: white;
-    width: 5vw;
+    width: 6vw;
     padding: 2.5px;
     border-radius: 20px 0px 0px 20px;
     position: absolute;
     top: 2.5%;
     right: 0;
+    min-width: 75px;
 }
 
 .star-icon {
@@ -276,7 +279,6 @@ main.light {
 }
 
 footer {
-    height: 40vh;
     background-color: black;
 }
 
@@ -312,6 +314,7 @@ footer {
     justify-content: space-around;
     gap: 100px;
     margin-top: 50px;
+    padding-bottom: 25px;
 }
 
 .footer-bottom-left, .footer-bottom-right{
@@ -347,4 +350,35 @@ footer {
 
 .footer-bottom-right ul li a:hover{
     color: rgb(234, 227, 227);
+}
+
+@media (max-width: 650px) {
+    .footer-top {
+        gap: 50px;
+        font-size: 1rem;
+    }
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 25px;
+    }
+    .footer-bottom-left, .footer-bottom-right{
+        align-items: center;
+    }
+
+    .footer-bottom-left p {
+        font-size: 0.8rem;
+    }
+
+    .movie-item {
+        min-width: 150px;
+        margin: 12px;
+        position: relative;
+    }
+    .movie-item-img {
+        min-width: 150px;
+    }
 }
