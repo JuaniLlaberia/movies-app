@@ -1,5 +1,29 @@
-.search-page {
-    background-color: #22253f;
+.search-page.dark {
+    --main-bg: #22253f;
+    --second-bg: rgb(41, 43, 87);
+    --main-text: white;
+    --second-text:rgba(248, 246, 246, 0.786);
+    --scroll-bar: #e3e3e3ab;
+    --border-sections: rgba(246, 242, 242, 0.142);
+
+    transition: all .5s ease;
+
+    background-color: var(--main-bg);
+    padding-bottom: 25px;
+    margin-top: 7.5vh;
+}
+
+.search-page.light {
+    --main-bg: rgb(228,229,241);
+    --second-bg: rgb(250,250,250);
+    --main-text: rgb(34, 34, 48);
+    --second-text:rgba(79, 77, 77, 0.786);
+    --scroll-bar: rgba(64, 64, 66, 0.671);
+    --border-sections: rgba(25, 24, 24, 0.193);
+
+    transition: all .5s ease;
+
+    background-color: var(--main-bg);
     padding-bottom: 25px;
     margin-top: 7.5vh;
 }
@@ -14,14 +38,14 @@
 .query {
     font-weight: 500;
     margin-left: 2.5px;
-    color: rgb(255, 255, 255);
+    color: var(--main-text);
 }
 
 .search-page header h6 {
     font-size: 1.5rem;
     font-weight: 400;
     margin-top: 10px;
-    color: rgba(255, 255, 255, 0.467);
+    color: var(--second-text);
 }
 
 .search-page header ul li{
@@ -29,7 +53,6 @@
     background-color: #eeeff4;
     padding: 7.5px;
     color: rgb(45, 42, 42);
-    /* transition: all .3s ease; */
 }
 
 .search-page header ul li.active{
@@ -113,7 +136,7 @@
 }
 
 .categories-bar::-webkit-scrollbar-thumb {
-    background: #e3e3e3ab;
+    background: var(--scroll-bar);
     border-radius: 10px;
 }
 
@@ -125,7 +148,7 @@
 }
 
 .no-results {
-    color: white;
+    color: var(--main-text);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -134,7 +157,7 @@
 
 .search-content {
     margin-top: 25px;
-    width: 90vw;
+    width: 80vw;
     background-color: transparent;
     border-radius: 16px 0 0 16px;
     display: grid;
@@ -152,7 +175,7 @@
 .pagination h6 {
     font-size: 1rem;
     font-weight: 500;
-    color: white;
+    color: var(--second-text);
 }
 
 .pagination button {

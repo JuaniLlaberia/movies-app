@@ -1,0 +1,60 @@
+.favorite-page.dark {
+    --main-bg: #22253f;
+    --second-bg: rgb(41, 43, 87);
+    --main-text: white;
+    --second-text:rgba(248, 246, 246, 0.786);
+    --scroll-bar: #e3e3e3ab;
+    --border-sections: rgba(246, 242, 242, 0.142);
+
+    transition: all .5s ease;
+
+    background-color: var(--main-bg);
+    padding-bottom: 25px;
+    margin-top: 7.5vh;
+}
+
+.favorite-page.light {
+    --main-bg: rgb(228,229,241);
+    --second-bg: rgb(250,250,250);
+    --main-text: rgb(34, 34, 48);
+    --second-text:rgba(79, 77, 77, 0.786);
+    --scroll-bar: rgba(64, 64, 66, 0.671);
+    --border-sections: rgba(25, 24, 24, 0.193);
+
+    transition: all .5s ease;
+
+    background-color: var(--main-bg);
+    padding-bottom: 25px;
+    margin-top: 7.5vh;
+}
+
+.favorite-page header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favorite-page header h6 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 10px;
+    color: var(--second-text);
+}
+
+.favorite-page-content {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    margin-top: 20px;
+    min-height: 100vh;
+    position: relative;
+}
+
+.favorite-list {
+    width: 70vw;
+}
+
+.favorite-list ul {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}

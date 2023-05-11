@@ -129,3 +129,54 @@
     color: white;
 }
 
+.options-buttons {
+    display: flex;
+
+    gap: 25px;
+}
+
+.options-buttons a {
+    margin-top: 100px;
+    background-color: rgba(128, 128, 128, 0.418);
+    padding: 15px;
+    width: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 24px;
+    font-size: 1.5rem;
+    transition: all .3s ease;
+    color: white;
+}
+
+.options-buttons a:hover{
+    color: rgba(246, 241, 241, 0.882);
+    background-color: rgba(128, 128, 128, 0.649);
+    transform: translateY(4%);
+    cursor: pointer;
+}
+
+.fav-icon-details {
+    margin-top: 100px;
+    width: 5vw;
+    background-color: rgba(128, 128, 128, 0.418);
+    border: none;
+    border-radius: 24px;
+    color: rgb(232, 223, 223);
+    transition: all .3s ease;
+}
+
+.fav-icon-details.active {
+    color: red;
+}
+
+.fav-icon-details:hover{
+    color: red;
+    background-color: rgba(128, 128, 128, 0.649);
+    transform: translateY(4%);
+    cursor: pointer;
+}
+
+.fav-icon-details.active:hover {
+    color: rgb(241, 237, 237);
+}

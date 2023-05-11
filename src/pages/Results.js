@@ -3,11 +3,14 @@ import '../assets/searchPage.css'
 import apiConfig from '../apiConfig'
 import MovieItem from '../components/MovieItem';
 import useFetchData from '../hooks/useFetchData';
+import { useTheme } from '../context/ThemeContext';
 
 const Results = ({query}) => {
     const [page, setPage] = useState(1);
     const [type, setType] = useState('multi');
     const {data, error, loading} = useFetchData(`${apiConfig.baseUrl}search/${type}?query=${query}&include_adult=false&language=en-US&page=${page}&api_key=${apiConfig.apiKey}`);
+    const { theme } = useTheme();
+
 
     const displayContent = data?.results?.map((item => {
         let title = item?.title
@@ -35,7 +38,7 @@ const Results = ({query}) => {
     };
 
   return (
-    <div className='search-page'>
+    <div className={`search-page ${theme}`}>
         <header>
             <h6>Results for: <span className='query'>{query}</span></h6>
             <ul>

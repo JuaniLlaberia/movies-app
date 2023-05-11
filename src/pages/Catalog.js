@@ -5,6 +5,7 @@ import MovieItem from '../components/MovieItem';
 import useFetchData from '../hooks/useFetchData';
 import { useParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { useTheme } from '../context/ThemeContext'
 
 const Catalog = () => {
     const {typeOf: isMovie} = useParams();
@@ -12,7 +13,8 @@ const Catalog = () => {
     const [type, setType] = useState('popularity.desc')
     const [category, setCategory] = useState('')
     const {data, error, loading} = useFetchData(`${apiConfig.baseUrl}discover/${isMovie}?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${type}&with_genres=${category}&vote_count.gte=200&api_key=${apiConfig.apiKey}`);
-    const {data: categories, error: errorCat, loading: loadingCat} = useFetchData(`${apiConfig.baseUrl}genre/movie/list?language=en&api_key=${apiConfig.apiKey}`)
+    const {data: categories} = useFetchData(`${apiConfig.baseUrl}genre/movie/list?language=en&api_key=${apiConfig.apiKey}`)
+    const { theme } = useTheme();
 
     useEffect(() => {
       setPage(1)
@@ -51,7 +53,7 @@ const Catalog = () => {
   })
 
   return (
-    <div className='search-page'>
+    <div className={`search-page ${theme}`}>
         <header>
           <h6>{isMovie === 'tv' ? 'TV Shows' : 'Movies'}</h6>
             <ul>
