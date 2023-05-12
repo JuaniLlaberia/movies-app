@@ -7,7 +7,6 @@
     --border-sections: rgba(246, 242, 242, 0.142);
 
     transition: all .5s ease;
-
     background-color: var(--main-bg);
     padding-bottom: 25px;
     margin-top: 7.5vh;
@@ -57,4 +56,33 @@
 .favorite-list ul {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+}
+
+/* @media (max-width:1550px) {
+    .favorite-list ul {
+        grid-template-columns: repeat(6, 1fr);
+    }
+} */
+@media (max-width:1480px) {
+    .favorite-list ul {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media (max-width:1300px) {
+    .favorite-list ul {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width:1030px) {
+    .favorite-list ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .favorite-list {
+        width: 80vw;
+    }
+}
+@media (max-width:775px) {
+    .favorite-list ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

@@ -157,7 +157,7 @@
 
 .search-content {
     margin-top: 25px;
-    width: 80vw;
+    width: 90vw;
     background-color: transparent;
     border-radius: 16px 0 0 16px;
     display: grid;
@@ -191,4 +191,33 @@
 .pagination button:hover {
     transform: translateY(4%);
     cursor: pointer;
+}
+
+@media (max-width:1550px) {
+    .search-content {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@media (max-width:1400px) {
+    .search-content {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media (max-width:1150px) {
+    .search-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width:950px) {
+    .search-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .categories-bar {
+        width: 90vw;
+    }
+}
+@media (max-width:550px) {
+    .search-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

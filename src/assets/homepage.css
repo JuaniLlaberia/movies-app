@@ -138,6 +138,8 @@ main.light {
 .movie-item-container {
     position: relative;
     list-style: none;
+    width: 25vw;
+    max-width: 220px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -257,7 +259,7 @@ main.light {
 .fav-icon-item {
     position: absolute;
     bottom: 10%;
-    right: 10%;
+    right: 15%;
     border: none;
     background-color: transparent;
     color: rgb(242, 234, 234);
@@ -351,8 +353,31 @@ footer {
 .footer-bottom-right ul li a:hover{
     color: rgb(234, 227, 227);
 }
+@media (max-width:950px) {
+    .home-page-header h1 {
+        font-size: 2rem;
+    }
 
-@media (max-width: 650px) {
+    .home-page-header input {
+        font-size: 1.25rem;
+        padding-left: 40px;
+        width: 40vw;
+    }
+    .home-page-header input::placeholder {
+        font-size: 1rem;
+    }
+
+    .magnifying-glass-icon {
+        left: 5%;
+        transform: translate(-5%, -50%);
+    }
+
+    .home-page-header button{
+        font-size: 0.9rem;
+        width: 15vw;
+    }
+}
+@media (max-width: 700px) {
     .footer-top {
         gap: 50px;
         font-size: 1rem;
@@ -380,5 +405,67 @@ footer {
     }
     .movie-item-img {
         min-width: 150px;
+    }
+
+    .home-page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .home-page-header input {
+        font-size: 1rem;
+    }
+    .home-page-header input::placeholder {
+        font-size: 0.8rem;
+    }
+    .fav-icon-item {
+        right: 10%;
+    }
+}
+@media (max-width:550px) {
+    .movie-item-container {
+        position: relative;
+        list-style: none;
+        width: 45vw;
+        max-width: 220px;
+        transition: all 0.3s ease-in-out;
+    }
+    .fav-icon-item {
+        position: absolute;
+        bottom: 10%;
+        right: 8%;
+        border: none;
+        background-color: transparent;
+        color: rgb(242, 234, 234);
+        transition: all .3s ease;
+    }
+}
+@media (max-width:500px) {
+    .home-page-header h1 {
+        font-size: 1rem;
+    }
+
+    .home-page-header input {
+        font-size: 1rem;
+        padding-left: 30px;
+        width: 70vw;
+    }
+    .home-page-header input::placeholder {
+        font-size: 0.8rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .magnifying-glass-icon {
+        top: 27.5%;
+        left: 7.5%;
+        transform: translate(-5%, -27.5%);
+    }
+
+    .home-page-header button{
+        padding: 10px 5px;
+        font-size: 0.8rem;
+        width: 30vw;
     }
 }
