@@ -323,8 +323,9 @@
 }
 
 .modal-trailer iframe {
-    width: 900px;
-    height: 555px;
+    width: 50vw;
+    height: 75vh;
+    min-width: 500px;
 }
 
 .overlay {
@@ -369,12 +370,16 @@
     font-weight: 300;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 520px) {
     .cast-card {
         min-width: 165px;
     }
     .cast-card img{
         min-width: 165px;
+    }
+    .modal-trailer iframe {
+        min-width: 350px;
+
     }
 }
 
