@@ -10,7 +10,7 @@
     width: 100vw;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: fixed;
     top: 0;
@@ -30,8 +30,43 @@
 
 .nav-item {
     color: white;
+    transition: all .3s ease;
 }
 
-/* .nav-item:hover {
-    color: rgb(161, 92, 92);
-} */
+.nav-item:hover {
+    cursor: pointer;
+    color: rgb(233, 235, 233);
+}
+
+.responsive-ham-button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+
+@media (max-width:650px) {
+    .responsive-ham-button {
+        display: block;
+    }
+    .navbar ul{
+        align-items: center;
+        flex-direction: column;
+        position: fixed;
+        top: 7.5%;
+        left: -15%;
+        background-color: rgb(41, 43, 87);
+        width: 50vw;
+        padding: 25px 0 25px 0;
+        transform: translateX(-350%);
+        transition: all .5s ease;
+    }
+    .navbar ul.active{
+        transform: translateY(0%);
+    }
+    .navbar {
+        justify-content: flex-start;
+    }
+}
