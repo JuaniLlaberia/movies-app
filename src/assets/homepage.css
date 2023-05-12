@@ -42,6 +42,17 @@ main.light {
     color: var(--main-text);
     font-size: 3rem;
     font-weight: 400;
+    transform: translateY(100%);
+    opacity: 0.5;
+    transition: all .4s ease;
+}
+
+.home-page-header h1.loaded {
+    color: var(--main-text);
+    font-size: 3rem;
+    font-weight: 400;
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .home-page-header input {
@@ -67,6 +78,21 @@ main.light {
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+
+    transform: translateY(35%);
+    opacity: 0.5;
+    transition: all .4s ease;
+}
+
+.search-bar.loaded {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+
+    transform: translateY(0%);
+    opacity: 1;
 }
 
 .magnifying-glass-icon {
@@ -231,7 +257,6 @@ main.light {
     border-bottom: 1px solid var(--border-sections);
     display: flex;
     overflow-x: scroll;
-    padding-bottom: 10px;
     transition: all .3s ease;
 }
 
@@ -281,7 +306,7 @@ main.light {
 }
 
 footer {
-    background-color: black;
+    background-color: rgb(36, 34, 34);
 }
 
 .footer-top {
@@ -358,6 +383,9 @@ footer {
         font-size: 2rem;
     }
 
+    .home-page-header h1.loaded {
+        font-size: 2rem;
+    }
     .home-page-header input {
         font-size: 1.25rem;
         padding-left: 40px;
@@ -410,7 +438,9 @@ footer {
     .home-page-header h1 {
         font-size: 1.5rem;
     }
-
+    .home-page-header h1.loaded {
+        font-size: 1.5rem;
+    }
     .home-page-header input {
         font-size: 1rem;
     }
@@ -443,7 +473,9 @@ footer {
     .home-page-header h1 {
         font-size: 1rem;
     }
-
+    .home-page-header h1.loaded {
+        font-size: 1rem;
+    }
     .home-page-header input {
         font-size: 1rem;
         padding-left: 30px;

@@ -6,15 +6,24 @@ import { faHeart, faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
 import MovieItem from '../components/MovieItem';
 import useFetchData from '../hooks/useFetchData';
 import { useFavContext } from '../context/FavoriteContext';
+import { useEffect, useState } from 'react';
+import CastCard from '../components/CastCard';
 
 const Details = () => {
     let { id, type } = useParams();
     const {data: info, error: errorInfo} = useFetchData(`${apiConfig.baseUrl}${type}/${id}?language=en-US&api_key=${apiConfig.apiKey}`);
     const {data: recommendations, error: errorRecommendations, loading: loadingRecommendations} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/recommendations?language=en-US&page=1&api_key=${apiConfig.apiKey}`);
     const {data: trailer} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/videos?language=en-US&api_key=${apiConfig.apiKey}`);
+    const {data: cast, error: errorCast, loading: loadingCast} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/credits?language=en-US&api_key=${apiConfig.apiKey}`);
     const { favItems, dispatch } = useFavContext();
+    const [loaded, setLoaded] = useState(false);
+    const [modalTrailer, setModalTrailer] = useState(false);
 
     const isItemFav = favItems?.some(item => item.id == id);
+
+    useEffect(() => setLoaded(true), []);
+
+    console.log(cast);
 
     //Movies and Tv shows have some different naming properties
 
@@ -33,8 +42,11 @@ const Details = () => {
         return <MovieItem key={rec?.id} posterImg={rec?.poster_path} title={title} score={rec?.vote_average} id={rec?.id} type={rec?.media_type}/>
     })
 
+    const castCards = cast?.cast?.slice(0, 15).map(person => {
+        return <CastCard key={person.id} character={person.character} name={person.name} img={person.profile_path}/>
+    })
+
     const trailerKey = trailer?.results?.filter(a => a.type === 'Trailer')[0]?.key;
-    const trailerId = trailer?.results?.filter(a => a.type === 'Trailer')[0]?.id;
 
   return (
   <>
@@ -42,7 +54,7 @@ const Details = () => {
       <div className='filter'></div>
       <img src={apiConfig.bgImgUrl(info.backdrop_path)} className='details-page-bg' alt={`${title} background`}/>
       <div className='details-page-info-section'>
-        <div className='left-info'>
+        <div className={`left-info ${loaded ? 'loaded' : ''}`}>
             <h1 className='details-page-title'>{title}</h1>
             <ul className='details-page-genres'>
                 {info.genres?.map(genre => <li>{genre.name}</li>)}
@@ -53,24 +65,35 @@ const Details = () => {
                 <h6 className='details-page-duration'>{type === 'tv' ? `Duration: ${duration} seasons`: `Duration: ${duration} min.`}</h6>
             </div>
             <div className='options-buttons'>
-                <a href={`https://www.youtube.com/watch?v=${trailerKey}${trailerId}`}><FontAwesomeIcon icon={faPlay}/> Play Now</a>
+                <a onClick={() => setModalTrailer(true)}><FontAwesomeIcon icon={faPlay}/> Play Now</a>
                 {isItemFav ? <button onClick={() => dispatch({type:'removeItem', info: {id:id}})} className='fav-icon-details active'><FontAwesomeIcon size='3x' icon={faHeart}/></button> : <button onClick={() => dispatch({type:'addItem', info:{name:title, id:id, type:type, posterImg:info.poster_path, score:info.vote_average}})} className='fav-icon-details'><FontAwesomeIcon size='3x' icon={faHeart}/></button>}
             </div>
         </div>
             <div className='img-container'>
                 <h6 className='details-page-score'><FontAwesomeIcon icon={faStar} className='star-icon'/> {(info.vote_average * 10).toFixed(1)}</h6>
-                <img src={apiConfig.posterImgUrl(info.poster_path)} className='details-page-poster' alt={`${title} poster`}/>
+                <img src={apiConfig.posterImgUrl(info.poster_path)} className='details-page-poster' alt={`${title} poster`} draggable={false}/>
             </div>
       </div>
       {errorInfo ? <div>{errorInfo.message}</div> : null}
     </section>
     <section className='recommendations'>
+        <h6 className='rec-title'>Cast</h6>
+        <ul className='details-items-scroll'>
+            {loadingCast ? <div className='loader'></div> : castCards}
+            {errorCast ? <div>{errorCast.message}</div> : null}
+        </ul>
+    </section>
+    <section className='recommendations'>
         <h6 className='rec-title'>Recommendations</h6>
-        <ul className='trending-items-scroll'>
+        <ul className='details-items-scroll'>
             {loadingRecommendations ? <div className='loader'></div> : recommendationsToRender}
             {errorRecommendations ? <div>{errorRecommendations.message}</div> : null}
         </ul>
     </section>
+    {modalTrailer ? <div className='modal-trailer'>
+        <iframe src={`https://www.youtube.com/embed/${trailerKey}`} title={`${title} Trailer`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen/>
+    </div>: null}
+    {modalTrailer ? <div className='overlay' onClick={() => setModalTrailer(false)}></div> : null}
   </>
   )
 }

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
+import Trending from "./pages/Trending";
 import Footer from './components/Footer'
 import Navbar from "./components/Navbar";
 import Results from "./pages/Results";
@@ -8,6 +9,7 @@ import Favorites from './pages/Favorites'
 import { useState } from "react";
 import Catalog from "./pages/Catalog";
 import ScrollToTopReload from "./components/ScrollToTopReload";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const [globalQuery, setGlobalQuery] = useState(() => {
@@ -26,6 +28,8 @@ function App() {
         <Route path="/:type/:id" element={<Details />}/>
         <Route path='/catalog/:typeOf' element={<Catalog />}/>
         <Route path='/favorites' element={<Favorites />}/>
+        <Route path='/*' element={<ErrorPage/>}/>
+        <Route path='/trending' element={<Trending />}/>
       </Routes>
       <Footer />
     </div>

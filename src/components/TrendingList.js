@@ -17,7 +17,7 @@ const TrendingList = ({title, urlSection}) => {
     <section className='trending-list'>
         <div className='trending-top'>
             <h6 className='trending-title'>{title}</h6>
-            <Link to='' className='see-more-link'>See more</Link>
+            <Link to='/trending' className='see-more-link'>See more</Link>
         </div>
         <ul className='trending-items-scroll'>
             {loading ? <ClipLoader color="#D4ADFC" /> : listToRender}
