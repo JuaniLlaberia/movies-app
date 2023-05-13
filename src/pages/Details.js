@@ -52,7 +52,7 @@ const Details = () => {
   <>
     <section className='details-page'>
       <div className='filter'></div>
-      <img src={apiConfig.bgImgUrl(info.backdrop_path)} className='details-page-bg' alt={`${title} background`}/>
+      <img src={apiConfig.bgImgUrl(info.backdrop_path)} className='details-page-bg' alt={`${title} background`} draggable={false}/>
       <div className='details-page-info-section'>
         <div className={`left-info ${loaded ? 'loaded' : ''}`}>
             <h1 className='details-page-title'>{title}</h1>

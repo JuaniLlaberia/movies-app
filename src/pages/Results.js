@@ -13,7 +13,7 @@ const Results = ({query}) => {
 
 
     const displayContent = data?.results?.map((item => {
-        let title = item?.title
+        let title = item?.title;
         if(title === undefined) title = item?.name
 
         let newType = item?.media_type;

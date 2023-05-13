@@ -10,17 +10,17 @@ import { useTheme } from '../context/ThemeContext'
 const Catalog = () => {
     const {typeOf: isMovie} = useParams();
     const [page, setPage] = useState(1);
-    const [type, setType] = useState('popularity.desc')
-    const [category, setCategory] = useState('')
+    const [type, setType] = useState('popularity.desc');
+    const [category, setCategory] = useState('');
     const {data, error, loading} = useFetchData(`${apiConfig.baseUrl}discover/${isMovie}?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=${type}&with_genres=${category}&vote_count.gte=200&api_key=${apiConfig.apiKey}`);
-    const {data: categories} = useFetchData(`${apiConfig.baseUrl}genre/movie/list?language=en&api_key=${apiConfig.apiKey}`)
+    const {data: categories} = useFetchData(`${apiConfig.baseUrl}genre/movie/list?language=en&api_key=${apiConfig.apiKey}`);
     const { theme } = useTheme();
 
     useEffect(() => {
       setPage(1)
       setType('popularity.desc')
       setCategory('')
-    }, [isMovie])
+    }, [isMovie]);
 
     const displayContent = data?.results?.map((item => {
         let title = item?.title
@@ -50,7 +50,7 @@ const Catalog = () => {
 
   const displayCategories = categories?.genres?.map(cat => {
     return <li key={cat.id} onClick={() => handleChangeCategory(cat.id)} className={category === cat.id ? 'active' : ''}>{cat.name}</li>
-  })
+  });
 
   return (
     <div className={`search-page ${theme}`}>

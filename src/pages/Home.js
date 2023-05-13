@@ -9,11 +9,6 @@ import { useTheme } from '../context/ThemeContext'
 const Home = ({setQuery}) => {
   const { favItems } = useFavContext();
   const { theme } = useTheme();
-  // const [isLoaded, setIsLoaded] = useState(false);
-
-  // useEffect(() => {
-  //     setTimeout(() => setIsLoaded(true), 1500);
-  // }, []);
 
   const favoritesToRender = favItems?.map(item => {
       return <MovieItem key={item?.id} posterImg={item?.posterImg} title={item?.name} score={item?.score} id={item?.id} type={item?.type}/>
@@ -24,7 +19,7 @@ const Home = ({setQuery}) => {
       <main className={`${theme}`}>
           <Header setQuery={setQuery}/>
           <TrendingList urlSection='trending/all/day?language=en-US' title="Today's Trending"/>
-          <TrendingList urlSection='trending/all/week?language=en-US' title="This Week Trending"/>
+          <TrendingList urlSection='trending/all/week?language=en-US' title="Weekly Trending"/>
           {favItems.length >= 1 ?
           <FavoriteList title='My List' list={favoritesToRender} linkTo='favorites'/>
           : null}

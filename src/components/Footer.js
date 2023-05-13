@@ -1,9 +1,13 @@
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const Footer = () => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <footer>
       <section className='footer-top'>
@@ -25,6 +29,7 @@ const Footer = () => {
         </div>
         <div className='footer-bottom-right'>
           <ul>
+            <button onClick={toggleTheme} style={{color:'white', background:'transparent', border:'none', cursor:'pointer'}}><FontAwesomeIcon icon={theme === 'dark' ? faMoon : faSun} size='3x'/></button>
             <li><a href='https://www.linkedin.com/in/juan-ignacio-llaberia-241b351b3/'><FontAwesomeIcon size='3x' icon={faLinkedin}/></a></li>
             <li><a href='https://github.com/JuaniLlaberia'><FontAwesomeIcon size='3x' icon={faGithub}/></a></li>
             <li><a href='https://www.instagram.com/juani_llabe/'><FontAwesomeIcon size='3x' icon={faInstagram}/></a></li>

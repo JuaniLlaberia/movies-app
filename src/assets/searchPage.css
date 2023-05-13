@@ -10,7 +10,7 @@
 
     background-color: var(--main-bg);
     padding-bottom: 25px;
-    margin-top: 7.5vh;
+    padding-top: 7.5vh;
 }
 
 .search-page.light {
@@ -25,7 +25,7 @@
 
     background-color: var(--main-bg);
     padding-bottom: 25px;
-    margin-top: 7.5vh;
+    padding-top: 7.5vh;
 }
 
 .search-page header {

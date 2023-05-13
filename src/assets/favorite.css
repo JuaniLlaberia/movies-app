@@ -9,7 +9,7 @@
     transition: all .5s ease;
     background-color: var(--main-bg);
     padding-bottom: 25px;
-    margin-top: 7.5vh;
+    padding-top: 7.5vh;
 }
 
 .favorite-page.light {
@@ -24,8 +24,10 @@
 
     background-color: var(--main-bg);
     padding-bottom: 25px;
-    margin-top: 7.5vh;
+    padding-top: 7.5vh;
 }
+
+
 
 .favorite-page header {
     display: flex;

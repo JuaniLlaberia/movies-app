@@ -123,6 +123,36 @@ main.light {
 .trending-title {
     font-size: 1.5rem;
     font-weight: 400;
+    transition: all .3s ease;
+}
+
+.trending-title.op {
+    opacity: 0.3;
+}
+
+.trending-title.behind {
+    font-size: 1.15rem;
+    top: 20%;
+    position: absolute;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all .4s ease;
+    color: var(--main-text);
+}
+
+.trending-title.behind.active {
+    opacity: 1;
+    transform: translateX(210%);
+}
+
+.trending-title.fav.behind.active {
+    opacity: 1;
+    transform: translateX(110%);
+}
+
+.see-more-hidden {
+    color: var(--second-text);
+    display: none;
 }
 
 .see-more-link {
@@ -182,7 +212,7 @@ main.light {
     list-style: none;
     margin: 9px;
     position: relative;
-    box-shadow: 0 3px 9px black;
+    box-shadow: 0 6px 12px black;
     transition: all 0.3s ease-in-out;
 }
 
@@ -449,6 +479,21 @@ footer {
     }
     .fav-icon-item {
         right: 10%;
+    }
+    .see-more-hidden {
+        display: block;
+    }
+    .trending-title.behind {
+        display: none;
+    }
+    .fav-icon-item:hover{
+        color: rgb(241, 237, 237);
+    }
+    .fav-icon-item.active:hover {
+        color: red;
+    }
+    .movie-item-container:hover {
+        transform: scale(1);
     }
 }
 @media (max-width:550px) {

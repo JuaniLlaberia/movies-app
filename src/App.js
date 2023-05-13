@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setQuery={setGlobalQuery}/>
       <ScrollToTopReload/>
       <Routes>
         <Route path='/' element={<Home setQuery={setGlobalQuery}/>}/>
