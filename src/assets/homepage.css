@@ -30,7 +30,7 @@ main.light {
 
 .home-page-header {
     height: 75vh;
-    background-color: var(--main-bg);
+    /* background-color: var(--main-bg); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -408,6 +408,14 @@ footer {
 .footer-bottom-right ul li a:hover{
     color: rgb(234, 227, 227);
 }
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(75%)
+}
 @media (max-width:950px) {
     .home-page-header h1 {
         font-size: 2rem;
@@ -433,6 +441,9 @@ footer {
     .home-page-header button{
         font-size: 0.9rem;
         width: 15vw;
+    }
+    .video-bg {
+        left: -100%;
     }
 }
 @media (max-width: 700px) {
@@ -495,6 +506,9 @@ footer {
     .movie-item-container:hover {
         transform: scale(1);
     }
+    .video-bg {
+        left: -150%;
+    }
 }
 @media (max-width:550px) {
     .movie-item-container {
@@ -512,6 +526,9 @@ footer {
         background-color: transparent;
         color: rgb(242, 234, 234);
         transition: all .3s ease;
+    }
+    .video-bg {
+        left: -225%;
     }
 }
 @media (max-width:500px) {
@@ -544,5 +561,12 @@ footer {
         padding: 10px 5px;
         font-size: 0.8rem;
         width: 30vw;
+    }
+}
+
+
+@media (max-width:425px){
+    .video-bg {
+        left: -310%;
     }
 }

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import headerBg from '../headerBg.mp4'
 
 const Header = ({setQuery}) => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Header = ({setQuery}) => {
           <FontAwesomeIcon icon={faMagnifyingGlass} className='magnifying-glass-icon'/>
           <button onClick={handleSearch}>Search</button>
         </div>
+        <video src={headerBg} className='video-bg' autoPlay={true} loop={true} muted={true}/>
     </header>
   )
 }

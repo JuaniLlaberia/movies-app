@@ -10,7 +10,6 @@ const Catalog = () => {
     const [page, setPage] = useState(1);
     const { theme } = useTheme();
     const {data, error, loading} = useFetchData(`${apiConfig.baseUrl}trending/all/day?language=en-US&page=${page}&api_key=${apiConfig.apiKey}`);
-    console.log(data);
 
     const displayContent = data?.results?.map((item => {
         let title = item?.title

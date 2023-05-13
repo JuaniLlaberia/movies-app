@@ -23,8 +23,6 @@ const Details = () => {
 
     useEffect(() => setLoaded(true), []);
 
-    console.log(cast);
-
     //Movies and Tv shows have some different naming properties
 
     let title = info.title;
