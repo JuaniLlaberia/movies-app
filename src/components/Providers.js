@@ -34,7 +34,7 @@ const Providers = ({type, id}) => {
     //Checking that is not undefined and then mapping the providers
     let providers = null;
     if (info && info.results && info.results[countryCode]) {
-        providers = info.results[countryCode].flatrate.map(item => {
+        providers = info.results[countryCode].flatrate?.map(item => {
             return <ProviderCard url={item.logo_path} />
         });
     }
