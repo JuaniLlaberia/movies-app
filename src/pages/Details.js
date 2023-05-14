@@ -8,8 +8,9 @@ import useFetchData from '../hooks/useFetchData';
 import { useFavContext } from '../context/FavoriteContext';
 import { useEffect, useState } from 'react';
 import CastCard from '../components/CastCard';
+import Providers from '../components/Providers';
 
-const Details = () => {
+const Details = ({countryCode}) => {
     let { id, type } = useParams();
     const {data: info, error: errorInfo} = useFetchData(`${apiConfig.baseUrl}${type}/${id}?language=en-US&api_key=${apiConfig.apiKey}`);
     const {data: recommendations, error: errorRecommendations, loading: loadingRecommendations} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/recommendations?language=en-US&page=1&api_key=${apiConfig.apiKey}`);
@@ -74,6 +75,7 @@ const Details = () => {
       </div>
       {errorInfo ? <div>{errorInfo.message}</div> : null}
     </section>
+    <Providers type={type} id={id} code={countryCode}/>
     <section className='recommendations'>
         <h6 className='rec-title'>Cast</h6>
         <ul className='details-items-scroll'>
