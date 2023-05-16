@@ -16,12 +16,11 @@ const Details = ({countryCode}) => {
     const {data: recommendations, error: errorRecommendations, loading: loadingRecommendations} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/recommendations?language=en-US&page=1&api_key=${apiConfig.apiKey}`);
     const {data: trailer} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/videos?language=en-US&api_key=${apiConfig.apiKey}`);
     const {data: cast, error: errorCast, loading: loadingCast} = useFetchData(`${apiConfig.baseUrl}${type}/${id}/credits?language=en-US&api_key=${apiConfig.apiKey}`);
-    const { favItems, dispatch } = useFavContext();
+    const { favItems, addFavMovie, removeFavMovie } = useFavContext();
     const [loaded, setLoaded] = useState(false);
     const [modalTrailer, setModalTrailer] = useState(false);
 
-    const isItemFav = favItems?.some(item => item.id == id);
-
+    const isItemFav = favItems?.some(item => item.data.movieId == id);
     useEffect(() => setLoaded(true), []);
 
     //Movies and Tv shows have some different naming properties
@@ -65,7 +64,7 @@ const Details = ({countryCode}) => {
             </div>
             <div className='options-buttons'>
                 <a onClick={() => setModalTrailer(true)}><FontAwesomeIcon icon={faPlay}/> Play Now</a>
-                {isItemFav ? <button onClick={() => dispatch({type:'removeItem', info: {id:id}})} className='fav-icon-details active'><FontAwesomeIcon size='3x' icon={faHeart}/></button> : <button onClick={() => dispatch({type:'addItem', info:{name:title, id:id, type:type, posterImg:info.poster_path, score:info.vote_average}})} className='fav-icon-details'><FontAwesomeIcon size='3x' icon={faHeart}/></button>}
+                {isItemFav ? <button onClick={() => removeFavMovie(Number(id))} className='fav-icon-details active'><FontAwesomeIcon size='3x' icon={faHeart}/></button> : <button onClick={() => addFavMovie(title, Number(id), type, info.poster_path, info.vote_average)} className='fav-icon-details'><FontAwesomeIcon size='3x' icon={faHeart}/></button>}
             </div>
         </div>
             <div className='img-container'>

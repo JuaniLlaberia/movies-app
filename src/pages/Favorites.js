@@ -8,7 +8,7 @@ const Favorites = () => {
   const { favItems } = useFavContext();
 
   const displayContent = favItems?.map(item => {
-    return <MovieItem key={item?.id} posterImg={item?.posterImg} title={item.name} score={item?.score} id={item?.id} type={item?.type}/>
+    return <MovieItem key={item?.id} posterImg={item?.data.posterImg} title={item.data.title} score={item?.data.score} id={item?.data.movieId} type={item?.data.type}/>
   })
 
   return (

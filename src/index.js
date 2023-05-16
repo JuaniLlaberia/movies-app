@@ -4,16 +4,19 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { FavoriteProvider } from './context/FavoriteContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <ThemeProvider>
+    <AuthProvider>
       <FavoriteProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
+        <ThemeProvider>
+            <React.StrictMode>
+              <App />
+            </React.StrictMode>
+        </ThemeProvider>
       </FavoriteProvider>
-    </ThemeProvider>
+    </AuthProvider>
   </BrowserRouter>
 );

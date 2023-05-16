@@ -1,40 +1,87 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
-
-const reducer = (crrState, action) => {
-    switch(action.type) {
-        case 'addItem':
-            if(crrState?.some(fav => fav.id === action.info.id)) return crrState;
-            const newArrayFavs = [...crrState];
-            newArrayFavs.push({
-                name:action.info.name,
-                id:action.info.id,
-                score:action.info.score,
-                type:action.info.type,
-                posterImg:action.info.posterImg,
-            });
-            return newArrayFavs
-        case 'removeItem':
-            console.log(crrState);
-            const newArrayToRemove = [...crrState];
-            const itemToRemove = newArrayToRemove.findIndex(item => item.id == action.info.id)
-            newArrayToRemove.splice(itemToRemove, 1)
-            return newArrayToRemove
-    }
-}
+import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
+import { db } from "../firebase_config";
+import { useAuthContext } from "./AuthContext";
 
 const FavoriteContext = createContext(undefined);
 
 export const FavoriteProvider = ({children}) => {
-    const [favItems, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('FAVORITE_ITEMS')) || []);
+    const [favItems, setFavItems] = useState([]);
+    const {currentUser, loginGoogle} = useAuthContext();
 
     useEffect(() => {
-        localStorage.setItem('FAVORITE_ITEMS', JSON.stringify(favItems));
-    }, [favItems]);
+        if(currentUser === null) return;
+        const unsubscribe = onSnapshot( //Listeners => to changes in the firestore collection
+          query(collection(db, 'favoriteMovies'), where('createdBy', '==', currentUser?.uid)),
+          (snapshot) => {
+            const res = [];
+            snapshot.forEach((doc) => {
+              res.push({
+                data: doc.data(),
+                id: doc.id,
+              });
+            });
+            setFavItems(res);
+          }
+        );
+        return () => unsubscribe(); // Cleanup the listener when the component unmounts
+      }, [currentUser?.uid]);
+
+    //ADD MOVIE TO FAV DB COLLECTION
+    const addFavMovie = async (title, id, type, posterImg, score) => {
+      if(currentUser === null) {
+        const handleLoginGoogle = async () => {
+          try {
+            await loginGoogle();
+          } catch(err) {
+            console.log(err);
+          }
+        };
+        handleLoginGoogle();
+        return;
+      };
+        try {
+            await addDoc(collection(db, 'favoriteMovies'), {
+                title: title,
+                movieId: id,
+                type: type,
+                posterImg: posterImg,
+                score: score,
+                createdBy: currentUser?.uid,
+            });
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    //REMOVE MOVIE FROM FAV DB COLLECTION
+    const removeFavMovie = async (id) => {
+      if(currentUser === null) return;
+      try {
+        const q = query(collection(db, 'favoriteMovies'), where("movieId", "==", id));
+        const querySnapshot = await getDocs(q);
+
+        let idToRemove;
+        querySnapshot?.forEach((doc) => {
+          idToRemove = doc.id;
+        });
+
+        deleteDoc(doc(db, 'favoriteMovies', idToRemove))
+          .then(() => {
+            console.log('REMOVED');
+          })
+          .catch((err) => console.log(err));
+      } catch (err) {
+        console.log(err);
+      }
+      };
 
     return (
     <FavoriteContext.Provider value={{
         favItems,
-        dispatch
+        addFavMovie,
+        removeFavMovie,
+
     }}>
         {children}
     </FavoriteContext.Provider>

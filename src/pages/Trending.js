@@ -14,6 +14,7 @@ const Catalog = () => {
     const displayContent = data?.results?.map((item => {
         let title = item?.title
         if(title === undefined) title = item?.name
+        console.log(item?.id);
         return <MovieItem key={item?.id} posterImg={item?.poster_path} title={title} score={item?.vote_average} id={item?.id} type={item?.media_type}/>
     }));
 
