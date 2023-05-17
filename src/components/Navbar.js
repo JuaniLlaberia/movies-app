@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm, faHouse, faTv, faHeart, faX, faBarsStaggered, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useRef, useState } from 'react'
 import { useAuthContext } from '../context/AuthContext'
-import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 const Navbar = ({setQuery}) => {
   const {currentUser, loginGoogle, logout} = useAuthContext();

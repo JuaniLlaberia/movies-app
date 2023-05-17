@@ -20,6 +20,8 @@ const Details = ({countryCode}) => {
     const [loaded, setLoaded] = useState(false);
     const [modalTrailer, setModalTrailer] = useState(false);
 
+    console.log(info);
+
     const isItemFav = favItems?.some(item => item.data.movieId == id);
     useEffect(() => setLoaded(true), []);
 
